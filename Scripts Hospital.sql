@@ -1,3 +1,8 @@
+/* Script de criação do banco de dados e criação das tabelas e relacionamentos
+   para o hospital levando como base o diagrama ER já feito para o hospital.*/
+
+
+
 CREATE DATABASE hospital;
 
 CREATE TABLE medico (
