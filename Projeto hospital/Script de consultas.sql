@@ -1,7 +1,3 @@
-/*Neste código utilizei todas as datas com o ano de 2022 porque no script de povoamento também utilizei o ano de 2022
-ao colocar as consultas, pois eu mesmo decidi criar as datas das consultas ao invés de pegar da planilia excel
-que já havia todos os dados de consultas preenchidos, mas escrevi o código com a restrição correta.*/
-
 SELECT id, data_hora as data, medico_id, pacientes_id, valorconsulta, convenio_id, carteiranumero,
 especialidade_id,( select avg(valorconsulta) from consulta where year(data_hora) = 2022
 AND convenio_id IS NULL) as valorMedio FROM consulta WHERE year(data_hora) = 2022 AND convenio_id IS NULL;
@@ -54,11 +50,6 @@ FROM enfermeiro
 JOIN enfermeiro_internacao ON enfermeiro.id = enfermeiro_internacao.enfermeiro_id
 GROUP BY enfermeiro.id
 HAVING COUNT(enfermeiro_internacao.Internacao_id) > 1;
-
-/* A consulta abaixo se trata da consulta extra idealizada por mim, que retorna os dados detalhados sobre
-a internação de todos os pacientes, retornando o nome do paciente, o nome do médico responsável pelo paciente,
-quantos dias o paciente ficou internado, qual o número do quarto que ele ficou internado, qual foi o tipo do quarto
-da internação e o total das despesas da internação a pagar. */
 
 SELECT p.nome AS NomePaciente, m.nome AS NomeMedico, DATEDIFF(data_alta, data_entrada) AS DiasInternados,
 Q.numero AS NumeroQuarto,
